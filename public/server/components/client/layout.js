@@ -10,16 +10,24 @@ export default function Layout({ children }) {
   const fetchAndSetNewJSX = (componentName) => {
     if (componentName === "greeting") {
       setJSX(
-        /*#__PURE__*/ React.createElement(RSC, {
-          componentName: componentName,
-          name: "Roger",
-        })
+        /*#__PURE__*/ React.createElement(
+          RSC,
+          {
+            componentName: componentName,
+            name: "Roger",
+          },
+          /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
+        )
       );
     } else {
       setJSX(
-        /*#__PURE__*/ React.createElement(RSC, {
-          componentName: componentName,
-        })
+        /*#__PURE__*/ React.createElement(
+          RSC,
+          {
+            componentName: componentName,
+          },
+          /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
+        )
       );
     }
   };

@@ -11,9 +11,17 @@ export default function Layout({ children }) {
 
   const fetchAndSetNewJSX = (componentName) => {
     if (componentName === "greeting") {
-      setJSX(<RSC componentName={componentName} name="Roger" />);
+      setJSX(
+        <RSC componentName={componentName} name="Roger">
+          <>loading ...</>
+        </RSC>
+      );
     } else {
-      setJSX(<RSC componentName={componentName} />);
+      setJSX(
+        <RSC componentName={componentName}>
+          <>loading ...</>
+        </RSC>
+      );
     }
   };
 
