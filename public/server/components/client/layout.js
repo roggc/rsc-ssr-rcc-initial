@@ -7,30 +7,11 @@ export default function Layout({ children }) {
   const author = "Jae Doe";
   const [count, setCount] = useSlice("count");
   const [JSX, setJSX] = React.useState(children);
-  const fetchAndSetNewJSX = (componentName) => {
-    if (componentName === "greeting") {
-      setJSX(
-        /*#__PURE__*/ React.createElement(
-          RSC,
-          {
-            componentName: componentName,
-            name: "Roger",
-          },
-          /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
-        )
-      );
-    } else {
-      setJSX(
-        /*#__PURE__*/ React.createElement(
-          RSC,
-          {
-            componentName: componentName,
-          },
-          /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
-        )
-      );
-    }
-  };
+  const loadingJSX = /*#__PURE__*/ React.createElement(
+    React.Fragment,
+    null,
+    "loading ..."
+  );
   return /*#__PURE__*/ React.createElement(
     "html",
     null,
@@ -48,7 +29,16 @@ export default function Layout({ children }) {
         /*#__PURE__*/ React.createElement(
           "a",
           {
-            onClick: () => fetchAndSetNewJSX("home"),
+            onClick: () =>
+              setJSX(
+                /*#__PURE__*/ React.createElement(
+                  RSC,
+                  {
+                    componentName: "home",
+                  },
+                  loadingJSX
+                )
+              ),
           },
           "Home"
         ),
@@ -67,7 +57,17 @@ export default function Layout({ children }) {
         /*#__PURE__*/ React.createElement(
           "button",
           {
-            onClick: () => fetchAndSetNewJSX("greeting"),
+            onClick: () =>
+              setJSX(
+                /*#__PURE__*/ React.createElement(
+                  RSC,
+                  {
+                    componentName: "greeting",
+                    name: "Roger",
+                  },
+                  loadingJSX
+                )
+              ),
           },
           "go"
         ),

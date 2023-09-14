@@ -9,21 +9,7 @@ export default function Layout({ children }) {
   const [count, setCount] = useSlice("count");
   const [JSX, setJSX] = React.useState(children);
 
-  const fetchAndSetNewJSX = (componentName) => {
-    if (componentName === "greeting") {
-      setJSX(
-        <RSC componentName={componentName} name="Roger">
-          <>loading ...</>
-        </RSC>
-      );
-    } else {
-      setJSX(
-        <RSC componentName={componentName}>
-          <>loading ...</>
-        </RSC>
-      );
-    }
-  };
+  const loadingJSX = <>loading ...</>;
 
   return (
     <html>
@@ -32,14 +18,28 @@ export default function Layout({ children }) {
       </head>
       <body>
         <nav>
-          <a onClick={() => fetchAndSetNewJSX("home")}>Home</a>
+          <a
+            onClick={() => setJSX(<RSC componentName="home">{loadingJSX}</RSC>)}
+          >
+            Home
+          </a>
           <hr />
           <input />
           <hr />
           <button onClick={() => setCount((c) => c + 1)}>+</button>
           {count}
           <hr />
-          <button onClick={() => fetchAndSetNewJSX("greeting")}>go</button>
+          <button
+            onClick={() =>
+              setJSX(
+                <RSC componentName="greeting" name="Roger">
+                  {loadingJSX}
+                </RSC>
+              )
+            }
+          >
+            go
+          </button>
           <hr />
         </nav>
         <main>{JSX}</main>
