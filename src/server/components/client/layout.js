@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "./footer.js";
 import { useSlice } from "../../../client/slices.js";
-import { fillJSXwithClientComponents, parseJSX } from "../../../utils/index.js";
 import RSC from "./rsc.js";
 
 export default function Layout({ children }) {
@@ -14,13 +13,7 @@ export default function Layout({ children }) {
     if (componentName === "greeting") {
       setJSX(<RSC componentName={componentName} name="Roger" />);
     } else {
-      setJSX(<>loading ...</>);
-      fetch(`/${componentName}?jsx`).then(async (response) => {
-        const clientJSXString = await response.text();
-        const clientJSX = JSON.parse(clientJSXString, parseJSX);
-        const fixedClientJSX = await fillJSXwithClientComponents(clientJSX);
-        setJSX(fixedClientJSX);
-      });
+      setJSX(<RSC componentName={componentName} />);
     }
   };
 

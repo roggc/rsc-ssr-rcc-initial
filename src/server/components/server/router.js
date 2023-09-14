@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./home.js";
+import HomeRSC from "./home-rsc.js";
 import GreetingRSC from "./greeting-rsc.js";
 import Layout from "../client/layout.js";
 import Provider from "../../../slices.js";
@@ -12,15 +12,15 @@ export default async function Router({ url }) {
       return (
         <Provider __isClient__="../client/slices.js">
           <Layout __isClient__="../server/components/client/layout.js">
-            <Home />
+            <HomeRSC />
           </Layout>
         </Provider>
       );
     case "/home":
-      return <Home />;
+      return <HomeRSC {...props} />;
     case "/greeting":
       return <GreetingRSC {...props} />;
     default:
-      return <Home />;
+      return <HomeRSC {...props} />;
   }
 }
