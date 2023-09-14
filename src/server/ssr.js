@@ -8,14 +8,16 @@ app.use(express.static("public"));
 app.use(async (req, res, next) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const response = await fetch("http://127.0.0.1:8081" + url.pathname);
+    const response = await fetch(
+      "http://127.0.0.1:8081" + url.pathname + "?" + url.searchParams
+    );
     if (!response.ok) {
       res.statusCode = response.status;
       res.end();
       return;
     }
     const clientJSXString = await response.text();
-    if (url.searchParams.has("jsx")) {
+    if (url.pathname !== "/") {
       // If the user is navigating between pages, send that serialized JSX as is
       res.setHeader("Content-Type", "application/json");
       res.end(clientJSXString);

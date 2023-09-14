@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Greeting({ greeting }) {
-  return <>{greeting}</>;
+export default function Greeting({ greeting, name }) {
+  return <>{`${greeting} ${name}`}</>;
 }

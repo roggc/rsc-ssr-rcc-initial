@@ -5,6 +5,8 @@ import Layout from "../client/layout.js";
 import Provider from "../../../slices.js";
 
 export default async function Router({ url }) {
+  const props = JSON.parse(url.searchParams.get("props"));
+
   switch (url.pathname) {
     case "/":
       return (
@@ -17,7 +19,7 @@ export default async function Router({ url }) {
     case "/home":
       return <Home />;
     case "/greeting":
-      return <GreetingRSC />;
+      return <GreetingRSC {...props} />;
     default:
       return <Home />;
   }

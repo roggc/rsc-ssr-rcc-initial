@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./footer.js";
 import { useSlice } from "../../../client/slices.js";
 import { fillJSXwithClientComponents, parseJSX } from "../../../utils/index.js";
-import PreGreeting from "./pre-greeting.js";
+import RSC from "./rsc.js";
 
 export default function Layout({ children }) {
   // const [count, setCount] = React.useState(0);
@@ -12,7 +12,7 @@ export default function Layout({ children }) {
 
   const fetchAndSetNewJSX = (componentName) => {
     if (componentName === "greeting") {
-      setJSX(<PreGreeting />);
+      setJSX(<RSC componentName={componentName} name="Roger" />);
     } else {
       setJSX(<>loading ...</>);
       fetch(`/${componentName}?jsx`).then(async (response) => {

@@ -2,21 +2,31 @@ import React from "../../../react.development.js";
 import Footer from "./footer.js";
 import { useSlice } from "../../../client/slices.js";
 import { fillJSXwithClientComponents, parseJSX } from "../../../utils/index.js";
+import RSC from "./rsc.js";
 export default function Layout({ children }) {
   // const [count, setCount] = React.useState(0);
   const author = "Jae Doe";
   const [count, setCount] = useSlice("count");
   const [JSX, setJSX] = React.useState(children);
   const fetchAndSetNewJSX = (componentName) => {
-    setJSX(
-      /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
-    );
-    fetch(`/${componentName}?jsx`).then(async (response) => {
-      const clientJSXString = await response.text();
-      const clientJSX = JSON.parse(clientJSXString, parseJSX);
-      const fixedClientJSX = await fillJSXwithClientComponents(clientJSX);
-      setJSX(fixedClientJSX);
-    });
+    if (componentName === "greeting") {
+      setJSX(
+        /*#__PURE__*/ React.createElement(RSC, {
+          componentName: componentName,
+          name: "Roger",
+        })
+      );
+    } else {
+      setJSX(
+        /*#__PURE__*/ React.createElement(React.Fragment, null, "loading ...")
+      );
+      fetch(`/${componentName}?jsx`).then(async (response) => {
+        const clientJSXString = await response.text();
+        const clientJSX = JSON.parse(clientJSXString, parseJSX);
+        const fixedClientJSX = await fillJSXwithClientComponents(clientJSX);
+        setJSX(fixedClientJSX);
+      });
+    }
   };
   return /*#__PURE__*/ React.createElement(
     "html",

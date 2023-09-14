@@ -8,6 +8,7 @@ export default async function GreetingRSC(props) {
     <>
       <Greeting
         greeting={data}
+        {...props}
         __isClient__="../server/components/client/greeting.js"
       />
     </>
