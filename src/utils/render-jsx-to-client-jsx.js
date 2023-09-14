@@ -8,7 +8,6 @@ export async function renderJSXToClientJSX(jsx, key = null) {
     // Don't need to do anything special with these types.
     return jsx;
   } else if (Array.isArray(jsx)) {
-    console.log("jsx", jsx);
     // Process each item in an array.
     return await Promise.all(
       jsx.map(
