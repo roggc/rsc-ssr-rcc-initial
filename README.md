@@ -26,3 +26,5 @@ Now run the servers (the RSC server (file rsc.js) and the SSR server (file ssr.j
 **node dist/server/rsc.js** and **node dist/server/ssr.js**.
 
 And we are done. Now go to the browser and load localhos:8080 to see the app in action. Have fun!
+
+An article explaining the theory behind this project can be found at [here](https://medium.com/@roggc9/rsc-ssr-rcc-react-client-components-implementation-from-scratch-e96ba0d6e1b4).
