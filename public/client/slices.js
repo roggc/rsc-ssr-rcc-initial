@@ -4,6 +4,9 @@ const { useSlice, Provider } = getHookAndProvider({
     count: {
       initialArg: 0,
     },
+    function: {
+      initialArg: null,
+    },
   },
 });
 export { useSlice };
