@@ -13,6 +13,9 @@ export default async function EmailRSC({ name }) {
     }, 3000)
   );
   return (
-    <Email __isClient__="../server/components/client/email.js" email={email} />
+    <Email
+      __isClient__="../../server/components/client/email.js"
+      email={email}
+    />
   );
 }

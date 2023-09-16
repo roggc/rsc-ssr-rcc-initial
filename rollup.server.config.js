@@ -5,7 +5,6 @@ export default {
     rsc: "src/server/rsc.js",
     ssr: "src/server/ssr.js",
     components: "src/server/components/server/router.js",
-    client: "src/client/index.js",
   },
   output: {
     dir: "dist",

@@ -12,8 +12,8 @@ export default async function Router({ url }) {
   switch (url.pathname) {
     case "/":
       return (
-        <Provider __isClient__="../client/slices.js">
-          <Layout __isClient__="../server/components/client/layout.js">
+        <Provider __isClient__="../slices.js">
+          <Layout __isClient__="../../server/components/client/layout.js">
             <HomeRSC />
           </Layout>
         </Provider>

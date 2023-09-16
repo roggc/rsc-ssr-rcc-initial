@@ -1,6 +1,9 @@
 import express from "express";
 import { renderToString } from "react-dom/server";
-import { fillJSXwithClientComponents, parseJSX } from "../utils/index.js";
+import {
+  fillJSXwithClientComponents,
+  parseJSX,
+} from "../client/utils/index.js";
 
 const app = express();
 app.use(express.static("public"));

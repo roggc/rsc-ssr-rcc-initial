@@ -45,7 +45,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/client/index.js",
   externals: [nodeExternals()],
   output: {
     filename: "test.js",
