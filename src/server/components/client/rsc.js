@@ -1,5 +1,8 @@
 import React from "react";
-import { fillJSXwithClientComponents, parseJSX } from "../../../utils/index.js";
+import {
+  fillJSXwithClientComponents,
+  parseJSX,
+} from "../../../client/utils/index.js";
 
 export default function RSC({ componentName, children, ...props }) {
   const [JSX, setJSX] = React.useState(children);

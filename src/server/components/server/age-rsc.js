@@ -12,5 +12,5 @@ export default async function AgeRSC({ name }) {
       }
     }, 1000)
   );
-  return <Age age={age} __isClient__="../server/components/client/age.js" />;
+  return <Age age={age} __isClient__="../../server/components/client/age.js" />;
 }
