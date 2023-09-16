@@ -44,10 +44,6 @@ export default function Layout({ children }) {
         </nav>
         <main>{JSX}</main>
         <Footer author={author} />
-        <script type="module" src="react.development.js" />
-        <script type="module" src="react-dom.development.js" />
-        <script type="module" src="client.js" />
-        <script type="module" src="client/index.js" />
       </body>
     </html>
   );

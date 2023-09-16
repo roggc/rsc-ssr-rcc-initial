@@ -24,7 +24,9 @@ app.use(async (req, res, next) => {
     } else {
       // If this is an initial page load, revive the tree and turn it into HTML
       const clientJSX = JSON.parse(clientJSXString, parseJSX);
+      console.log("clientJSX", clientJSX);
       const fixedJSX = await fillJSXwithClientComponents(clientJSX);
+      console.log("fixedJSX", fixedJSX);
       let html = renderToString(fixedJSX);
       html += `<script>window.__INITIAL_CLIENT_JSX_STRING__ = `;
       html += clientJSXString + ";";

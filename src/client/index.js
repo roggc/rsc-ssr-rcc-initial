@@ -1,5 +1,5 @@
 import { fillJSXwithClientComponents, parseJSX } from "../utils/index.js";
-import { hydrateRoot } from "../client.js";
+import { hydrateRoot } from "react-dom/client";
 
 const root = hydrateRoot(document, await getInitialClientJSX());
 
