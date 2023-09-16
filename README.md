@@ -6,11 +6,13 @@ This is an implementation from scratch of RSC (React Server Components) plus SSR
 
 First of all run **npm i** to install the node modules.
 
-Next run **npx babel ./src -d ./dist** to transpile the project. This will produce a **dist** folder with the transpiled code.
+Next run **npx rollup -c rollup.server.config.js**. This will create the **dist** folder.
+
+Next run **npx rollup -c rollup.client.config.js**. This will create the **public** folder.
 
 Finally run next commands each in its own terminal window:
 
-**node dist/server/rsc.js** and **node dist/server/ssr.js**.
+**node dist/rsc.js** and **node dist/ssr.js**.
 
 And we are done. Now go to the browser and load **localhost:8080** to see the app in action. Have fun!
 
