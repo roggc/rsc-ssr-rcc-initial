@@ -8,6 +8,19 @@ import { globby } from "globby";
 
 export default [
   {
+    input: {
+      rsc: "src/server/rsc.js",
+      ssr: "src/server/ssr.js",
+      router: "src/server/components/server/router.js",
+    },
+    output: {
+      dir: "dist",
+      format: "es",
+    },
+    plugins: [babel({ babelHelpers: "bundled" })],
+    preserveModules: true,
+  },
+  {
     input: (await globby("src/client/*.js"))
       .concat(await globby("src/server/components/client/*.js"))
       .reduce(
@@ -19,7 +32,7 @@ export default [
       ),
     output: {
       dir: "public",
-      format: "esm",
+      format: "es",
       entryFileNames: "[name].js",
     },
     plugins: [
@@ -35,19 +48,6 @@ export default [
         "process.env.NODE_ENV": JSON.stringify("development"),
       }),
     ],
-    preserveModules: true,
-  },
-  {
-    input: {
-      rsc: "src/server/rsc.js",
-      ssr: "src/server/ssr.js",
-      components: "src/server/components/server/router.js",
-    },
-    output: {
-      dir: "dist",
-      format: "esm",
-    },
-    plugins: [babel({ babelHelpers: "bundled" })],
     preserveModules: true,
   },
 ];

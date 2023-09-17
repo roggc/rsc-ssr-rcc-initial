@@ -1,7 +1,7 @@
 import React from "react";
 import express from "express";
 import Router from "./components/server/router.js";
-import { renderJSXToClientJSX, stringifyJSX } from "../utils/index.js";
+import { renderJSXToClientJSX, stringifyJSX } from "./utils/index.js";
 
 async function sendJSX(res, jsx) {
   const clientJSX = await renderJSXToClientJSX(jsx);
