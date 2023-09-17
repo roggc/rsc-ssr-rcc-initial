@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx rollup -c -w",
+    "dev": "npx rollup -c -w",
     "rsc": "nodemon dist/rsc.js",
     "ssr": "nodemon dist/ssr.js"
   },
