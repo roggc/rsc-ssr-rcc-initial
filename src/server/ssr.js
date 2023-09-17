@@ -1,5 +1,5 @@
 import express from "express";
-import { renderToString } from "react-dom/server";
+import { renderToPipeableStream } from "react-dom/server";
 import {
   fillJSXwithClientComponents,
   parseJSX,
@@ -28,12 +28,15 @@ app.use(async (req, res, next) => {
       // If this is an initial page load, revive the tree and turn it into HTML
       const clientJSX = JSON.parse(clientJSXString, parseJSX);
       const fixedJSX = await fillJSXwithClientComponents(clientJSX);
-      let html = renderToString(fixedJSX);
-      html += `<script>window.__INITIAL_CLIENT_JSX_STRING__ = `;
-      html += clientJSXString + ";";
-      html += `</script>`;
-      res.setHeader("Content-Type", "text/html");
-      res.end(html);
+      const bootstrapScriptContent = `window.__INITIAL_CLIENT_JSX_STRING__ = ${clientJSXString};`;
+      const { pipe } = renderToPipeableStream(fixedJSX, {
+        bootstrapModules: ["src/client/index.js"],
+        bootstrapScriptContent,
+        onShellReady() {
+          res.setHeader("content-type", "text/html");
+          pipe(res);
+        },
+      });
     }
   } catch (err) {
     next(err);
