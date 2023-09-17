@@ -17,7 +17,7 @@ export default [
       dir: "dist",
       format: "es",
     },
-    plugins: [babel({ babelHelpers: "bundled" })],
+    plugins: [babel({ babelHelpers: "bundled", exclude: "node_modules/**" })],
     preserveModules: true,
   },
   {

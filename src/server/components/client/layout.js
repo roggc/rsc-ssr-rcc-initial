@@ -6,6 +6,7 @@ import RSC from "./rsc.js";
 export default function Layout({ children }) {
   const author = "Jae Doe";
   const [count, setCount] = useSlice("count");
+  const [count2, reduxDispatch, { increment }] = useSlice("count2");
   const [JSX, setJSX] = React.useState(children);
 
   const loadingJSX = <>loading ...</>;
@@ -27,6 +28,9 @@ export default function Layout({ children }) {
           <hr />
           <button onClick={() => setCount((c) => c + 1)}>+</button>
           {count}
+          <hr />
+          <button onClick={() => reduxDispatch(increment())}>+</button>
+          {count2}
           <hr />
           <button
             onClick={() =>
