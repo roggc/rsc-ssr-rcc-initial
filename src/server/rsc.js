@@ -12,6 +12,10 @@ async function sendJSX(res, jsx) {
 
 const app = express();
 
+app.get("/favicon.ico", (req, res, next) => {
+  res.send("");
+});
+
 app.use(async (req, res, next) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
