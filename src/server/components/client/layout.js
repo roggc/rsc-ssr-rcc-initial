@@ -5,11 +5,11 @@ import RSC from "./rsc.js";
 
 const LoadingPage = ({ page }) => <>loading {page} page...</>;
 
-export default function Layout({ children }) {
+export default function Layout() {
   const author = "Jae Doe";
   const [count, setCount] = useSlice("count");
   const [count2, reduxDispatch, { increment }] = useSlice("count2");
-  const [page, setPage] = useState();
+  const [page, setPage] = useState({ name: "home" });
 
   return (
     <html>
@@ -38,13 +38,9 @@ export default function Layout({ children }) {
           <hr />
         </nav>
         <main>
-          {page ? (
-            <RSC key={page.name} componentName={page.name} {...page.props}>
-              <LoadingPage page={page.name} />
-            </RSC>
-          ) : (
-            children
-          )}
+          <RSC key={page.name} componentName={page.name} {...page.props}>
+            <LoadingPage page={page.name} />
+          </RSC>
         </main>
         <Footer author={author} />
         <script type="module" src="src/client/index.js" />

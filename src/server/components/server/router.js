@@ -14,14 +14,7 @@ export default async function Router({ url }) {
     case "/":
       return (
         <Provider __isClient__="../slices.js">
-          <Layout __isClient__="../../server/components/client/layout.js">
-            <RSC
-              __isClient__="../../server/components/client/rsc.js"
-              componentName="home"
-            >
-              <>loading home page ...</>
-            </RSC>
-          </Layout>
+          <Layout __isClient__="../../server/components/client/layout.js" />
         </Provider>
       );
     case "/home":
