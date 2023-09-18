@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./footer.js";
 import { useSlice } from "../../../client/slices.js";
 import RSC from "./rsc.js";
+
+const LoadingPage = ({ page }) => <>loading {page} page...</>;
 
 export default function Layout({ children }) {
   const author = "Jae Doe";
   const [count, setCount] = useSlice("count");
   const [count2, reduxDispatch, { increment }] = useSlice("count2");
-  const [JSX, setJSX] = React.useState(children);
-
-  const loadingJSX = <>loading ...</>;
+  const [page, setPage] = useState();
 
   return (
     <html>
@@ -18,11 +18,7 @@ export default function Layout({ children }) {
       </head>
       <body>
         <nav>
-          <a
-            onClick={() => setJSX(<RSC componentName="home">{loadingJSX}</RSC>)}
-          >
-            Home
-          </a>
+          <a onClick={() => setPage({ name: "home" })}>Home</a>
           <hr />
           <input />
           <hr />
@@ -34,18 +30,22 @@ export default function Layout({ children }) {
           <hr />
           <button
             onClick={() =>
-              setJSX(
-                <RSC componentName="greeting" name="Roger">
-                  {loadingJSX}
-                </RSC>
-              )
+              setPage({ name: "greeting", props: { name: "Roger" } })
             }
           >
             go
           </button>
           <hr />
         </nav>
-        <main>{JSX}</main>
+        <main>
+          {page ? (
+            <RSC key={page.name} componentName={page.name} {...page.props}>
+              <LoadingPage page={page.name} />
+            </RSC>
+          ) : (
+            children
+          )}
+        </main>
         <Footer author={author} />
         <script type="module" src="src/client/index.js" />
       </body>
