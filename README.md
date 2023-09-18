@@ -1,6 +1,6 @@
 # RSC + SSR + RCC
 
-This is an implementation from scratch of RSC (React Server Components) plus SSR (Server Side Rendering) plus RCC (React Client Components).
+This is an implementation from scratch of RSC (React Server Components) plus SSR (Server Side Rendering) plus RCC (React Client Components). There is a [Version 2](https://github.com/roggc/rsc-ssr-rcc-2) of this implementation with only one server. I recommend you to take a look at it too.
 
 ## How to install and run the project.
 
