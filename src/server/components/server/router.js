@@ -3,7 +3,6 @@ import HomeRSC from "./home-rsc.js";
 import GreetingRSC from "./greeting-rsc.js";
 import AgeRSC from "./age-rsc.js";
 import EmailRSC from "./email-rsc.js";
-import RSC from "../client/rsc.js";
 import Provider from "../../../client/slices.js";
 import Layout from "../client/layout.js";
 

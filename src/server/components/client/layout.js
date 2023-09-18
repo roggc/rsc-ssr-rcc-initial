@@ -43,7 +43,6 @@ export default function Layout() {
           </RSC>
         </main>
         <Footer author={author} />
-        <script type="module" src="src/client/index.js" />
       </body>
     </html>
   );
